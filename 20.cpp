@@ -1,10 +1,10 @@
 //
-// Created by 虞圣赟 on 2019/1/15.
+// Created by ShengyunYu on 2019/1/15.
 //
 
 #include "common.h"
 
-
+//Solution 1
 class Solution {
 public:
     bool isValid(string s) {
