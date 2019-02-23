@@ -29,5 +29,7 @@ public:
 };
 
 int main(){
-
+    int i = 1;
+    int m = i+++i++;
+    cout << m << endl;
 }
