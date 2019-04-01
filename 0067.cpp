@@ -13,11 +13,7 @@ using namespace std;
 class Solution {
 public:
     string addBinary(string a, string b) {
-        reverse(a.begin(), a.end());
-        reverse(b.begin(), b.end());
-        string c = "";
-        int carry = 0;
-        for(int i = 0; )
+
     }
 };
 

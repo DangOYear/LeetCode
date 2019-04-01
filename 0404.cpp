@@ -24,16 +24,22 @@ public:
         while (!q.empty()){
             TreeNode *p = q.front();
             q.pop();
-            //cout << p->val << endl;
-            if (p->left == NULL && p->right == NULL)
-                res += p->val;
-            if (p->left)   q.push(p->left);
-            if (p->right)  q.push(p->right);
+            if (hasLeftLeaf(p)) res += p->left->val;
+            if (p->left)    q.push(p->left);
+            if (p->right)   q.push(p->right);
         }
         return res;
     }
 
-    bool
+    bool hasLeftLeaf(TreeNode *p){
+        if (p == NULL || p->left == NULL)
+            return false;
+        TreeNode *q = p->left;
+        if (q->left == NULL && q->right == NULL)
+            return true;
+        else
+            return false;
+    }
 };
 
 
