@@ -16,14 +16,18 @@ struct TreeNode {
 class Solution {
 public:
     bool isBalanced(TreeNode* root) {
-        if (!root）  return true;
+        if (!root)  return true;
         int left = getHeight(root->left);
         int right = getHeight(root->right);
-        return balanced(root)
+        if (abs((left - right)) <= 1)
+            return isBalanced(root->left) && isBalanced(root->right);
+        else
+            return false;
     }
 
     int getHeight(TreeNode* root){
-
+        if (!root) return 0;
+        return 1 + max(getHeight(root->left), getHeight(root->right));
     }
 };
 
