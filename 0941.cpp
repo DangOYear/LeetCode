@@ -7,13 +7,16 @@
 class Solution {
 public:
     bool validMountainArray(vector<int>& A) {
-        bool flag = false;
+        int i = 0;
+        int N = A.size();
+        while (i + 1 < N && A[i] < A[i + 1])
+            i++;
+        if (i == 0 || i == N - 1)
+            return false;
 
-        for (int i = 1; i < A.size(); ++i) {
-            if (A[i] - A[i - 1] >= 0 && flag)
-                return false;
-            
-        }
+        while (i + 1 < N && A[i] > A[i + 1])
+            i++;
+        return i == N - 1;
     }
 };
 
