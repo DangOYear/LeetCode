@@ -13,5 +13,5 @@ public:
 
 int main(){
     Solution s;
-    cout << 
+    cout <<
 }

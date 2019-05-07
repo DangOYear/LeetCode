@@ -15,6 +15,23 @@ struct TreeNode {
 class Solution {
 public:
     int findSecondMinimumValue(TreeNode* root) {
-
+        preOrder(root);
+        if (p.size() < 2)
+            return -1;
+        p.pop();
+        return p.top();
     }
+
+    void preOrder(TreeNode* root)  {
+        if (root) {
+            preOrder(root->left);
+            if (root->left == NULL && root->right == NULL)
+                p.push(root->val);
+            preOrder(root->right);
+        }
+    }
+
+private:
+    priority_queue<int> p;
+    //set<int> value;
 };
