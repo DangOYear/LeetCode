@@ -2,34 +2,38 @@
 // Created by ShengyunYu on 2019/2/4.
 //
 
-#include <iostream>
-#include <stack>
+#include "common.h"
 using namespace std;
 
 
 class MinStack {
 public:
-    stack
     /** initialize your data structure here. */
     MinStack() {
 
     }
 
     void push(int x) {
-
+        m.insert(x);
+        s.push(x);
     }
 
     void pop() {
-
+        m.erase(m.find(s.top()));
+        s.pop();
     }
 
     int top() {
-
+        return s.top();
     }
 
     int getMin() {
-
+        return *(m.begin());
     }
+
+private:
+    stack<int> s;
+    multiset<int> m;
 };
 
 
