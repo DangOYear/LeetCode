@@ -13,7 +13,18 @@ using namespace std;
 class Solution {
 public:
     string addBinary(string a, string b) {
-
+        string res = "";
+        int carry = 0;
+        int aLen = a.length() - 1;
+        int bLen = b.length() - 1;
+        while(aLen >= 0 || bLen >= 0 || carry == 1)
+        {
+            carry += aLen >= 0 ? a[aLen--] - '0': 0;
+            carry += bLen >= 0 ? b[bLen--] - '0': 0;
+            res = to_string(carry % 2) + res;
+            carry /= 2;
+        }
+        return res;
     }
 };
 
