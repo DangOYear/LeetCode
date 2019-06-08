@@ -8,7 +8,7 @@ class Solution {
 public:
     int arrangeCoins(int n) {
         int i = 1;
-        while (i * (i + 1) / 2 <= n - i - 1){
+        while (i <= floor(n * 2.0 / (i + 1))) {
             i++;
         }
         return i - 1;
@@ -19,4 +19,5 @@ public:
 int main(){
     Solution s;
     cout << s.arrangeCoins(1804289383) << endl;
+    cout << s.arrangeCoins(5) << endl;
 }
