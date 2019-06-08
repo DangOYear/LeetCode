@@ -21,7 +21,26 @@
 #include <utility>
 #include <map>
 
+
+
 using namespace std;
+
+
+void PrintVector(vector<int> v) {
+    cout << "vector<int>:";
+    for (int i = 0; i < v.size(); ++i) {
+        cout << v[i] << " ";
+    }
+    cout << endl;
+}
+
+void PrintBool(bool flag) {
+    if (flag)
+        cout << "True" << endl;
+    else
+        cout << "False" << endl;
+}
+
 
 
 //0290可以优化
