@@ -44,3 +44,4 @@ void PrintBool(bool flag) {
 
 
 //0290可以优化
+//0933可以用二分优化
