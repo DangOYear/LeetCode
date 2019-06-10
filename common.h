@@ -21,9 +21,24 @@
 #include <utility>
 #include <map>
 
-
+#include <sstream>
 
 using namespace std;
+
+
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode(int x) : val(x), next(NULL) {}
+};
+
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
 
 
 void PrintVector(vector<int> v) {
@@ -41,7 +56,13 @@ void PrintBool(bool flag) {
         cout << "False" << endl;
 }
 
+void PrintLinkList(ListNode* root) {
+    while (root) {
+        cout << root->val << " ";
 
+    }
+    cout << endl;
+}
 
 //0290可以优化
 //0933可以用二分优化
