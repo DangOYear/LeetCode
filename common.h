@@ -41,13 +41,23 @@ struct TreeNode {
 
 
 
-void PrintVector(vector<int> v) {
+void PrintIntVector(vector<int> v) {
     cout << "vector<int>:";
     for (int i = 0; i < v.size(); ++i) {
         cout << v[i] << " ";
     }
     cout << endl;
 }
+
+void PrintStringVector(vector<string> v) {
+    cout << "vector<string>:" << endl;
+    cout << "[" << endl;
+    for (int i = 0; i < v.size(); ++i) {
+        cout << "   " << v[i] << endl;
+    }
+    cout <<"]"<< endl;
+}
+
 
 void PrintBool(bool flag) {
     if (flag)
