@@ -4,13 +4,6 @@
 
 #include "common.h"
 
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-};
-
 
 class Solution {
 public:
@@ -18,20 +11,26 @@ public:
         preOrder(root);
         if (p.size() < 2)
             return -1;
+        int max = p.top();
         p.pop();
-        return p.top();
+
+        return max == p.top() ? -1 : p.top();
     }
 
     void preOrder(TreeNode* root)  {
         if (root) {
             preOrder(root->left);
-            if (root->left == NULL && root->right == NULL)
-                p.push(root->val);
+            if (root->left == NULL && root->right == NULL) {
+                if (value.count(root->val) == 0) {
+                    value.insert(root->val);
+                    p.push(root->val);
+                }
+            }
             preOrder(root->right);
         }
     }
 
 private:
-    priority_queue<int> p;
-    //set<int> value;
+    priority_queue<int, vector<int> , greater<int>> p;
+    set<int> value;
 };

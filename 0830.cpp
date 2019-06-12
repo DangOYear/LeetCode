@@ -8,8 +8,17 @@ class Solution {
 public:
     vector<vector<int>> largeGroupPositions(string S) {
         vector<vector<int>> res;
-        for (int i = 0; i < S.length() - 1; ++i) {
-            if ()
+        int left = 0;
+        int right = 0;
+        for (int i = 0; i < S.length(); ++i) {
+            while (i < S.length() && S[i] == S[left]) {
+                i++;
+            }
+            if (i - left >= 3) {
+                vector<int> range{left, i - 1};
+                res.push_back(range);
+            }
+            left = i;
         }
 
         return res;
