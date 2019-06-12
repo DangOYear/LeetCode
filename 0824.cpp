@@ -17,31 +17,49 @@ public:
         while (is >> temp) {
             if (!isAEIOU(temp[0])) {
                 temp += temp[0];
-                temp.substr(1, temp.size() - 1);
+                temp = temp.substr(1, temp.size() - 1);
             }
-            temp += 'ma';
+            temp += "ma";
             string a(count, 'a');
             temp += a;
+            count++;
+            temp += " ";
+            res += temp;
         }
 
+        return res.substr(0, res.length() - 1);
         //return temp;
 
     }
 
     bool isAEIOU(char c) {
-        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
-            return true;
+        switch (c) {
+            case 'a':
+            case 'e':
+            case 'i':
+            case 'o':
+            case 'u':
+            case 'A':
+            case 'E':
+            case 'I':
+            case 'O':
+            case 'U':
+                return true;
+            default:
+                return false;
+
         }
-        return false;
     }
 };
 
 int main() {
     Solution s;
     string S = "I speak Goat Latin";
+    cout << s.toGoatLatin(S) << endl;
     PrintBool(s.toGoatLatin(S) == "Imaa peaksmaaa oatGmaaaa atinLmaaaaa");
 
     string S1 = "The quick brown fox jumped over the lazy dog";
+    cout << s.toGoatLatin(S1) << endl;
     PrintBool(s.toGoatLatin(S) == "heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa");
 
 }

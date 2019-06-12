@@ -20,7 +20,12 @@ public:
             if (emails[i].find("+") != emails[i].npos) {
                 user = emails[i].substr(0, emails[i].find("+"));
             }
-            user.replace(user.begin(), user.end(), ".", "");
+            string temp = user;
+            user = "";
+            for (int j = 0; j < temp.size(); ++j) {
+                if (temp[j] != '.')
+                    user += temp[j];
+            }
             address.insert(user + domain);
         }
         return address.size();
