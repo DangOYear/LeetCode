@@ -69,7 +69,7 @@ void PrintBool(bool flag) {
 void PrintLinkList(ListNode* root) {
     while (root) {
         cout << root->val << " ";
-
+        root = root->next;
     }
     cout << endl;
 }
