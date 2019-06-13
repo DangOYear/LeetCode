@@ -26,4 +26,6 @@ int main() {
     root->next->next = new ListNode(1);
     root->next->next->next = new ListNode(2);
     root->next->next->next->next = new ListNode(3);
+    Solution s;
+    PrintLinkList(s.deleteDuplicates(root));
 }
