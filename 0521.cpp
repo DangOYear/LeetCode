@@ -1,0 +1,14 @@
+//
+// Created by ShengyunYu on 2019/7/3.
+//
+
+#include "common.h"
+
+
+class Solution {
+public:
+    int findLUSlength(string a, string b) {
+        if (a == b) return -1;
+        return a.length() > b.length()? a.length():b.length();
+    }
+};
