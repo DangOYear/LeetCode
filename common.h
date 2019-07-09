@@ -73,7 +73,15 @@ void PrintStringVector(vector<string> v) {
 }
 
 
+void levelTravel(TreeNode* root) {
+    if (root == NULL)
+        return;
+    queue<TreeNode*> q;
+    q.push(root);
+    while (!q.empty()) {
 
+    }
+}
 
 
 void PrintBool(bool flag) {
