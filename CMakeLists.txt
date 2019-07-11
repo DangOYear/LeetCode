@@ -3,5 +3,5 @@ project(LeetCode)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(LeetCode 0056.cpp)
+add_executable(LeetCode 0784.cpp)
 
