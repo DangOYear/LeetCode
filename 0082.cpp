@@ -16,19 +16,24 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        ListNode* left = head;
-        ListNode* right = head->next;
-        while (right!= NULL) {
-            while (right->val == left->val)
-                right = right->next;
-            if (right != NULL) {
-                left->next = right;
-                left = left->next;
-                right = left->next;
+        ListNode* ZeroHead = new ListNode(0);
+        ZeroHead->next = head;
+        ListNode* pre = ZeroHead;
+        ListNode* now = ZeroHead->next;
+        while (now) {
+            if (now->next && now->next->val == now->val) {
+                int temp = now->val;
+                while (now && temp == now->val) {
+                    now = now->next;
+                }
+            } else {
+                pre->next = now;
+                pre = now;
+                now = now->next;
             }
-
         }
-        return head;
+        pre->next = now;
+        return ZeroHead->next;
     }
 };
 
