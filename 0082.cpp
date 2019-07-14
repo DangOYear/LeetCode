@@ -11,12 +11,24 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+
+
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        ListNode* root = new ListNode(0);
-        root->next = head;
+        ListNode* left = head;
+        ListNode* right = head->next;
+        while (right!= NULL) {
+            while (right->val == left->val)
+                right = right->next;
+            if (right != NULL) {
+                left->next = right;
+                left = left->next;
+                right = left->next;
+            }
 
+        }
+        return head;
     }
 };
 

@@ -8,9 +8,13 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        int repeat = 0;
-        for (int i = 0; i < nums.size() - 1; ++i) {
-            if (nums.size())
+        int pos = 0;
+        for (int i = 0; i < nums.size(); ++i) {
+            if (pos < 2 || nums[i] != nums[pos - 2]) {
+                nums[pos] = nums[i];
+                ++pos;
+            }
         }
+        return pos;
     }
 };
