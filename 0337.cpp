@@ -16,32 +16,34 @@
  */
 class Solution {
 public:
-    int rob(TreeNode* root) {
-        vector
-        int oddlevel = 0;
-        int evenlevel = 0;
-        int level = 0;
-        if (!root) return oddlevel;
-        queue<TreeNode*> q;
-        q.push(root);
-        while (!q.empty()) {
-            level++;
-            int temp = 0;
-            for (int i = q.size() - 1; i >= 0; --i) {
-                TreeNode* p = q.front();
-                q.pop();
-                temp += p->val;
-                if (p->left)    q.push(p->left);
-                if (p->right)   q.push(p->right);
-            }
-            if (level % 2 == 1) {
-                oddlevel += temp;
-            } else{
-                evenlevel += temp;
-            }
-        }
-        return max(oddlevel, evenlevel);
+
+    int max_with_root(TreeNode* root) {
+        if (root == NULL)
+            return 0;
+        return root->val + max_without_root(root->left) + max_without_root(root->right);
     }
+
+    int max_without_root(TreeNode* root) {
+        if (root == NULL)
+            return 0;
+        return steal(root->left) + steal(root->right);
+    }
+
+
+    int steal(TreeNode* root) {
+        if (cache.count(root) >= 1)
+            return cache[root];
+        cache[root] = max(max_without_root(root), max_with_root(root));
+        return cache[root];
+    }
+
+
+    int rob(TreeNode* root) {
+        return steal(root);
+    }
+
+private:
+    map<TreeNode*, int> cache;
 };
 
 
