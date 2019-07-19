@@ -104,3 +104,4 @@ void PrintLinkList(ListNode* root) {
 //0215可以用快速排序进行优化
 
 //todo 0208
+//1094可以用map优化少占内存
