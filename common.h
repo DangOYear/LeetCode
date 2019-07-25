@@ -63,6 +63,20 @@ void PrintIntVectorVector(vector<vector<int>> v) {
 }
 
 
+void PrintCharVectorVector(vector<vector<char >> v) {
+    cout << "[" << endl;
+    for (int i = 0; i < v.size(); ++i) {
+        cout << "  [";
+        for (int j = 0; j < v[i].size(); ++j) {
+            cout << " " << v[i][j];
+        }
+        cout << "]" << endl;
+    }
+
+    cout << "]" << endl;
+}
+
+
 void PrintStringVector(vector<string> v) {
     cout << "vector<string>:" << endl;
     cout << "[" << endl;
