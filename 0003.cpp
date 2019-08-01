@@ -11,7 +11,7 @@ public:
     int lengthOfLongestSubstring(string s) {
         int res = 0, left = -1, len = s.size();
         unordered_map<int,int> m;
-        for(int i=0; i<len; i++){
+        for(int i = 0; i < len; i++){
             if(m.count(s[i]) && m[s[i]] > left){
                 left = m[s[i]];
             }
