@@ -1,8 +1,9 @@
 //
-// Created by ShengyunYu on 2019/7/18.
+// Created by ShengyunYu on 2019/8/3.
 //
 
 #include "common.h"
+
 
 /**
  * Definition for a binary tree node.
@@ -15,7 +16,7 @@
  */
 class Solution {
 public:
-    vector<TreeNode*> delNodes(TreeNode* root, vector<int>& to_delete) {
+    TreeNode* recoverFromPreorder(string S) {
 
     }
 };
@@ -23,5 +24,7 @@ public:
 
 int main() {
     Solution solution;
+    string S = "1-401--349---90--88";
+    TreeNode* root = solution.recoverFromPreorder(S);
 
 }

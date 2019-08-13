@@ -7,15 +7,11 @@
 class Solution {
 public:
     int getSum(int a, int b) {
-        int sum, carry;
-        sum = a ^ b;
-
-        carry = (a & b) << 1;
-
-        if (carry != 0) {
-            return getSum(sum, carry);
-        }
-        return sum;
+        return b == 0 ? a:getSum(a^b, (unsigned int)(a & b) << 1);
     }
 };
 
+int main() {
+    Solution solution;
+    cout << solution.getSum(-1, 1);
+}
