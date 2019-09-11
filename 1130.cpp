@@ -13,12 +13,10 @@ public:
         int res = 0;
         priority_queue<int, vector<int>, greater<int> > pq;
         for(int x:arr) {
-            leafValue += x;
             pq.push(x);
         }
 
-        while (pq.size() >= 2) {
-            int temp = 1;
+        while (pq.size() >= 0) {
             temp *= pq.top();
             pq.pop();
             temp *= pq.top();
