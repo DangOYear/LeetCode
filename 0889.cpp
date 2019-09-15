@@ -25,19 +25,14 @@ public:
         if (preRight - preLeft < 0) return NULL;
         TreeNode* root = new TreeNode(pre[preLeft]);
         if (preRight - preLeft == 0) return root;
-
         int L = 0;
-
         for (int i = postLeft; i <= postRight; ++i) {
             if (post[i] == pre[preLeft + 1]) {
                 L = i;
                 break;
             }
         }
-
-
         root->left = construct(pre, post, preLeft + 1, L - postLeft + preLeft + 1, postLeft, L);
-
         root->right = construct(pre, post, preRight - postRight + 2 + L, preRight, L + 1, postRight - 1);
         return root;
     }
