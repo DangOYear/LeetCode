@@ -97,6 +97,9 @@ void levelTravel(TreeNode* root) {
     }
 }
 
+void PrintInt(int num) {
+    cout << "Num: " << num << endl;
+}
 
 void PrintBool(bool flag) {
     if (flag)
