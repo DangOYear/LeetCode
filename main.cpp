@@ -1,44 +1,37 @@
+#include<iostream>
 
-#include "common.h"
+using namespace std;
+const int maxn=1<<12;
+long long dp[2][maxn];
+int cur,n,m;
 
-class solution {
-public:
-    int deadline(int n, vector<vector<int>>&task) {
-        dfs(task, 0, task.size() - 1);
-        return minValue;
-    }
+void add(int a,int b){
+    if(b&(1<<m))
+        dp[cur][b^(1<<m)]+=dp[cur^1][a];
+}
 
-    void dfs(vector<vector<int>>&task, int left, int right) {
-        if (left == right) {
-            int day = 0;
-            int deadlineday = 0;
-            for (auto x : task) {
-                if (day+x[1] <= x[0]) {
-                    day += x[1];
-                }
-                else {
-                    day += x[1];
-                    deadlineday += day - x[0];
+int main(){
+    while(scanf("%d%d",&n,&m)!=EOF){
+        if(n<m)
+            swap(n,m);
+        int all=(1<<m)-1;
+        memset(dp,0,sizeof(dp));
+        dp[0][all]=1;
+        cur=0;
+        for(int i=0;i<n;i++)
+            for(int j=0;j<m;j++){
+                cur^=1,memset(dp[cur],0,sizeof(dp[cur]));
+                for(int sta=0;sta<=all;sta++){
+                    if(dp[cur^1][sta]==0)
+                        continue;
+                    add(sta,sta<<1);//这个点不放,sta<<1让sta的最后一位为0
+                    if(i && !(sta & ( 1<<(m-1) ) ) )//竖着放,不是第一行,而且上面的位置没放
+                        add(sta,(sta<<1)^(1<<m)^1);
+                    if(j && !(sta & 1) )    //横着放
+                        add(sta,(sta<<1)^3);
                 }
             }
-            minValue = min(deadlineday, minValue);
-        } else{
-            for (int i = left; i <= right; ++i) {
-                swap(task[i], task[left]);
-                dfs(task, left + 1, right);
-            }
-        }
-
+        printf("%lld\n",dp[cur][all]);
     }
-private:
-
-    int minValue = INT_MAX;
-};
-
-
-int main() {
-    vector<vector<int>> task{{3, 3}, {8, 1}, {3, 2}};
-    int n = 3;
-    solution solution;
-    cout << solution.deadline(n, task);
+    return 0;
 }
