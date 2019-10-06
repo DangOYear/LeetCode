@@ -5,8 +5,35 @@
 class Solution {
 public:
     int numPrimeArrangements(int n) {
+        long res = 1;
+        int prime = 0;
+        int notPrime = 0;
+        int mod = 1000000007;
+        for (int i = 2; i <= n; ++i) {
+            if (isPrime(i))
+                prime++;
+        }
+        notPrime = n - prime;
+        //cout << prime << endl;
+        for (int j = 2; j <= prime; ++j) {
+            res = (res * j) % mod;
+        }
 
+        for (int j = 2; j <= notPrime; ++j) {
+            res = (res * j) % mod;
+        }
+        return (int)res;
     }
+
+    bool isPrime(int num) {
+        int s = sqrt(num);
+        for (int i = 2; i <= s; ++i) {
+            if (num % i == 0)
+                return false;
+        }
+        return true;
+    }
+
 };
 
 //Example 1:
