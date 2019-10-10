@@ -8,7 +8,7 @@
 class Solution {
 public:
     vector<string> reorderLogFiles(vector<string>& logs) {
-        sort(logs.begin(), logs.end(), [](string a, string b) {
+        stable_sort(logs.begin(), logs.end(), [](string a, string b) {
             string s1 = a.substr(a.find(' ') + 1);
             string s2 = b.substr(b.find(' ') + 1);
             bool isDigit1 = isdigit(s1[0]);
