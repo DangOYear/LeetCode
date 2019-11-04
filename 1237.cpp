@@ -4,13 +4,6 @@
 
 #include "common.h"
 
-interface CustomFunction {
-public:
-// Returns positive integer f(x, y) for any given positive integer x and y.
-int f(int x, int y);
-};
-
-
 /*
  * // This is the custom function interface.
  * // You should not implement it, or speculate about its implementation
@@ -27,8 +20,18 @@ class Solution {
 public:
     vector<vector<int>> findSolution(CustomFunction& customfunction, int z) {
         vector<vector<int>> res;
-
-
+        for (int x = 1; x <= 1000; ++x) {
+            if (customfunction.f(x, 1) > z)
+                break;
+            for (int y = 1; y <= 1000; ++y) {
+                int temp = customfunction.f(x, y);
+                if (temp > z)
+                    break;
+                if (temp == z)
+                    res.push_back({x, y});
+            }
+        }
+        return res;
     }
 };
 
